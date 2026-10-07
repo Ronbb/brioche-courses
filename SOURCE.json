@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/Ronbb/brioche",
+  "commit": "ac627861c27af635f36d87bd594e0871d5f670a7",
+  "paths": [
+    "docs/content/",
+    "docs/generated/author-lesson.schema.json"
+  ],
+  "extractedFiles": 135
+}
