@@ -1,0 +1,20 @@
+name: French curriculum
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  curriculum:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+        with:
+          repository: Ronbb/chef
+          ref: 78f33e8
+          path: .chef-validator
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24.20.0
+          package-manager-cache: false
+      - run: cargo build --manifest-path .chef-validator/Cargo.toml --locked -p chef-engine --bin chef-server
+      - run: node .chef-validator/scripts/check-curriculum.mjs .chef-validator/target/debug/chef-server docs/content/releases/audio-forty-eight.release.json docs/content docs/examples
